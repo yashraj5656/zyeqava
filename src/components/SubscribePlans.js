@@ -9,7 +9,7 @@ export default function SubscribePlans() {
 
   const plan = {
     name: "Full Access",
-    amount: selectedCurrency === 'INR' ? 1 : 9.99,
+    amount: selectedCurrency === 'INR' ? 799 : 9.99,
     currency: selectedCurrency,
     description:
       "Enter the cyber grid. Hack systems, expose secrets, rewrite the digital world.",

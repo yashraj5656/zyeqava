@@ -99,9 +99,13 @@ export default function Home() {
           onClick={handleDownload}
           className="btn primary"
           style={{ textAlign: "center", width: "100%" }}
+          data-text="Mr. Bot"
         >
-          <span className="btn-text">Download APK</span>
+          <span className="btn-text">Download APK (Premium)</span>
         </button>
+        <a href="/mr-botfree.apk" className="btn primary" data-text="Mr. Bot" style={{ textAlign: "center", width: "100%",marginTop:'1rem' }}>
+          <span className="btn-text">Download APK (Free)</span>
+        </a>
       </section>
 
       {/* === Footer === */}
