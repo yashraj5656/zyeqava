@@ -103,7 +103,7 @@ export default function Home() {
         >
           <span className="btn-text">Download APK (Premium)</span>
         </button>
-        <a href="/mr-botfree.apk" className="btn primary" data-text="Mr. Bot" style={{ textAlign: "center", width: "100%",marginTop:'1rem' }}>
+        <a href="/Mr-BotFree.apk" className="btn primary" data-text="Mr. Bot" style={{ textAlign: "center", width: "100%",marginTop:'1rem' }}>
           <span className="btn-text">Download APK (Free)</span>
         </a>
       </section>

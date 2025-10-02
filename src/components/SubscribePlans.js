@@ -67,7 +67,7 @@ export default function SubscribePlans() {
       <div className="recon-container" style={{ textAlign: "center" }}>
         <h2>Subscription Successful!</h2>
         <p>You now have access to download the APK.</p>
-        <a href="/mr-bot.apk" className="btn primary" data-text="Mr. Bot">
+        <a href="/Mr-Bot.apk" className="btn primary" data-text="Mr. Bot">
           <span className="btn-text">Download APK</span>
         </a>
       </div>

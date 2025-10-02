@@ -1,6 +1,30 @@
+"use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Story() {
+  const router = useRouter();
+
+  // Example: simulate fetching subscription status
+  const [isSubscribedmb, setIsSubscribedmb] = useState(false);
+
+  useEffect(() => {
+    // Replace this with your real subscription check, e.g., API call or cookie/localStorage
+    const subscriptionStatus = localStorage.getItem("subscribedmb"); // 'true' or 'false'
+    setIsSubscribedmb(subscriptionStatus === "true");
+  }, []);
+
+  const handleDownload = (e) => {
+    e.preventDefault();
+    if (isSubscribedmb) {
+      // If subscribed, allow download
+      window.location.href = "/Mr-Bot.apk";
+    } else {
+      // If not subscribed, redirect to subscribe page
+      router.push("/subscribe");
+    }
+  };
   return (
     <main className="landing-container">
       {/* === Topbar === */}
@@ -90,8 +114,16 @@ export default function Story() {
           The revolution he had once dreamed of wasn’t a single explosion. It was a slow, brittle architecture of laws, watchdogs, and citizens who insisted on watching their watchers. Arin had been an instrument—necessary, dangerous, imperfect. He’d seen the system: he’d tried to burn it down, and found that sometimes rebuilding means choosing the long, tedious work over the glamour of destruction.
         </p>
       </section>
-      <a href="/Mr-Bot.apk" className="btn primary" data-text="Mr. Bot" style={{textAlign:'center'}}>
-          <span className="btn-text">Download APK</span>
+      <button
+          onClick={handleDownload}
+          className="btn primary"
+          style={{ textAlign: "center", width: "100%" }}
+          data-text="Mr. Bot"
+        >
+          <span className="btn-text">Download APK (Premium)</span>
+        </button>
+      <a href="/Mr-BotFree.apk" className="btn primary" data-text="Mr. Bot" style={{textAlign:'center' ,marginTop:'1rem'}}>
+          <span className="btn-text">Download APK (Free)</span>
         </a>
 
       {/* === Footer === */}
