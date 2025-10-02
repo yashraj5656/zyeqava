@@ -1,0 +1,330 @@
+/* === Root Variables === */
+:root {
+    --bg-color: #0d0d0d;
+    --primary-color: #00f2ea;
+    --secondary-color: #a855f7;
+    --text-color: #e5e5e5;
+    --muted: #aaa;
+    --danger: #ff3333;
+    --success: #00ffaa;
+    --font-family: "Fira Code", Consolas, "Courier New", Courier, monospace;
+    --glitch-anim-duration: 0.4s;
+    --blur-effect: blur(10px);
+  }
+  
+  /* === Base Styles === */
+  body {
+    background: linear-gradient(180deg, var(--bg-color), #071018);
+    color: var(--text-color);
+    font-family: 'Orbitron', sans-serif;
+    line-height: 1.6;
+  }
+  
+  .hasa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  /* === Loader === */
+  .banter-loader {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 72px;
+    height: 72px;
+    margin: -36px 0 0 -36px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 2px;
+    animation: banter-loader-wrapper 4s infinite ease-in-out;
+  }
+  
+  .banter-loader__box {
+    background: var(--primary-color);
+    opacity: 0.6; /* Transparent effect */
+    animation: banter-loader-box 1s infinite ease-in-out;
+  }
+  
+  .banter-loader__box:nth-child(1) { animation-delay: calc(0.1s * 1); }
+  .banter-loader__box:nth-child(2) { animation-delay: calc(0.1s * 2); }
+  .banter-loader__box:nth-child(3) { animation-delay: calc(0.1s * 3); }
+  .banter-loader__box:nth-child(4) { animation-delay: calc(0.1s * 4); }
+  .banter-loader__box:nth-child(5) { animation-delay: calc(0.1s * 5); }
+  .banter-loader__box:nth-child(6) { animation-delay: calc(0.1s * 6); }
+  .banter-loader__box:nth-child(7) { animation-delay: calc(0.1s * 7); }
+  .banter-loader__box:nth-child(8) { animation-delay: calc(0.1s * 8); }
+  .banter-loader__box:nth-child(9) { animation-delay: calc(0.1s * 9); }
+  
+  @keyframes banter-loader-box {
+    0%, 35%, 100% { transform: scale(0); opacity: 0; }
+    17.5% { transform: scale(1); opacity: 0.8; }
+  }
+  
+  /* === Subscription Wrapper === */
+  .sub-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+  }
+  
+  /* === Subscription Card === */
+  .sub-card {
+    background: transparent;
+    backdrop-filter: var(--blur-effect);
+    -webkit-backdrop-filter: var(--blur-effect);
+    border: 1px solid rgba(0, 242, 234, 0.2);
+    border-radius: 0px;
+    clip-path: polygon(20px 0%, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0% 20px);
+    padding: 1.5rem;
+    width: 300px;
+    box-shadow: 0 0 20px rgba(0, 242, 234, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .sub-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(0, 242, 234, 0.3);
+  }
+  
+  /* === Sub Header === */
+  .sub-header {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .sub-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .sub-name:hover::before,
+  .sub-name:hover::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    color: var(--secondary-color);
+    animation: glitch-anim var(--glitch-anim-duration) both;
+  }
+  
+  .sub-name:hover::after {
+    color: var(--bg-color);
+    animation: glitch-anim var(--glitch-anim-duration) reverse both;
+  }
+  
+  /* === Sub Body === */
+  .sub-body {
+    text-align: center;
+  }
+  
+  .sub-des {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  
+  .currency-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-color);
+  }
+  
+  .currency-toggle input {
+    appearance: none;
+    width: 40px;
+    height: 20px;
+    background: rgba(0, 242, 234, 0.1);
+    border: 1px solid var(--primary-color);
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .currency-toggle input::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+  }
+  
+  .currency-toggle input:checked {
+    background: rgba(168, 85, 247, 0.1);
+    border-color: var(--secondary-color);
+  }
+  
+  .currency-toggle input:checked::before {
+    transform: translateX(20px);
+    background: var(--secondary-color);
+  }
+  
+  .currency-toggle span {
+    margin: 0 0.5rem;
+  }
+  
+  .sub-amo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--success);
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .sub-amo:hover::before,
+  .sub-amo:hover::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    color: var(--secondary-color);
+    animation: glitch-anim var(--glitch-anim-duration) both;
+  }
+  
+  .sub-amo:hover::after {
+    color: var(--bg-color);
+    animation: glitch-anim var(--glitch-anim-duration) reverse both;
+  }
+  
+  /* === Features List === */
+  .sub-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .sub-item {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .check {
+    color: var(--success);
+    margin-right: 0.5rem;
+    font-weight: bold;
+  }
+  
+  /* === Subscribe Button === */
+  .sub-card button {
+    padding: 0.8rem 1rem;
+    border-radius: 0px;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    clip-path: polygon(20px 0%, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0% 20px);
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+  
+  .sub-card button:hover,
+  .sub-card button:focus {
+    background: var(--primary-color);
+    color: var(--bg-color);
+    box-shadow: 0 0 15px var(--primary-color);
+  }
+  
+  .sub-card button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .sub-card button span {
+    position: relative;
+    z-index: 1;
+    transition: opacity 0.2s ease;
+  }
+  
+  .sub-card button:hover span {
+    opacity: 0;
+  }
+  
+  .sub-card button::before,
+  .sub-card button::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    background: var(--primary-color);
+    transition: opacity 0.2s ease;
+  }
+  
+  .sub-card button:hover::before {
+    opacity: 1;
+    color: var(--secondary-color);
+    animation: glitch-anim var(--glitch-anim-duration) both;
+  }
+  
+  .sub-card button:hover::after {
+    opacity: 1;
+    color: var(--bg-color);
+    animation: glitch-anim var(--glitch-anim-duration) reverse both;
+  }
+  
+  @keyframes glitch-anim {
+    0% { transform: translate(0); clip-path: inset(0 0 0 0); }
+    20% { transform: translate(-5px, 3px); clip-path: inset(50% 0 20% 0); }
+    40% { transform: translate(3px, -2px); clip-path: inset(20% 0 60% 0); }
+    60% { transform: translate(-4px, 2px); clip-path: inset(80% 0 5% 0); }
+    80% { transform: translate(4px, -3px); clip-path: inset(30% 0 45% 0); }
+    100% { transform: translate(0); clip-path: inset(0 0 0 0); }
+  }
+  
+  /* === Responsive Design === */
+  @media (max-width: 768px) {
+    .sub-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .sub-card {
+      width: 100%;
+      max-width: 400px;
+    }
+  }
